@@ -3,7 +3,7 @@
         <% for( review of listing.reviews ) { %>
             <div class="review-card">
                 <div class="listing-review-user-info">
-                    <img src="<%= review.author.avatar %>" alt="user_img">
+                    <img src="<%= review.author.avatar.url %>" alt="user_img">
                     <div>
                         <h6><b class="review-creater"><%= review.author.firstName %></b></h6>
                         <p><%= review.createdAt.toLocaleDateString('en-US') %></p>
