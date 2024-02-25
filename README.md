@@ -1,0 +1,3 @@
+
+Welcome to myTravelApp
+Explore the globe with myTravelApp, your ultimate travel companion! This dynamic project combines the versatility of HTML, CSS, and JavaScript on the frontend, with the robust capabilities of Node.js, Express.js, and MongoDB on the backend. Key npm packages such as Mapbox SDK, Cloudinary, and Passport enhance the user experience, providing seamless navigation, stunning images, and secure authentication. Technologies like EJS, Joi, and Multer contribute to the project's functionality. Join us on this exciting journey and turn your travel dreams into reality! 🌍✈️
