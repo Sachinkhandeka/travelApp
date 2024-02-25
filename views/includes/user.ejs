@@ -1,0 +1,107 @@
+<div class="user-container">
+    <% if(!currUser) { %>
+        <div>
+            <a href="/users/login" class="user-login-signup">
+                <i class="fa-regular fa-user"></i>
+                <p>Log in</p>
+            </a>
+        </div> 
+        <div>
+            <a href="/wishlists/users">
+                <i class="fa-regular fa-heart"></i>
+                <p>Wishlists</p>
+            </a>
+        </div>
+        <div>
+            <a href="/listings" class="wishlist">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>Explore</p>
+            </a>
+        </div>
+    <% } %>
+    <% if (currUser) { %>
+        <div>
+            <a href="/listings">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>Explore</p>
+            </a>
+        </div>
+        <div>
+            <a href="/wishlists/users">
+                <i class="fa-regular fa-heart"></i>
+                <p>Wishlists</p>
+            </a>
+        </div>
+        <div>
+            <a href="#">
+                <img src="<%= currUser.avatar.url %>" alt="User_img" class="user-img" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                <div class="offcanvas offcanvas-start z-index" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                    <div class="offcanvas-header">
+                        <img src="<%= currUser.avatar.url %>" alt="img" class="user-info-img">
+                      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+                        <b><%= currUser.firstName %> <%= currUser.lastName %></b>
+                      </h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <hr>
+                    <div class="offcanvas-body">
+                      <div class="user-info">
+                        <div class="username">
+                            <i class="fa-solid fa-image-portrait"></i>
+                            <p><%= currUser.username %></p>
+                        </div>
+                        <div class="user-email">
+                            <i class="fa-solid fa-envelope"></i>
+                            <p><%= currUser.email %></p>
+                        </div>
+                        <div class="user-phone-number">
+                            <i class="fa-solid fa-phone"></i>
+                            <p><%= currUser.phoneNumber %></p>
+                        </div>
+                        <div class="user-dob">
+                            <i class="fa-solid fa-calendar-day"></i>
+                            <p><%= currUser.dateOfBirth %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="logout-btn">
+                        <a href="/users/logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    </div>
+                  </div>
+                <p><%= currUser.firstName %></p>
+            </a>
+        </div>
+    <% } %>
+</div>
+<script>
+    // JavaScript to make the container sticky on scroll
+    var userContainer = document.querySelector('.user-container');
+    var sticky = userContainer.offsetTop;
+
+    window.onscroll = function() {
+        if (window.innerWidth >= 768) {
+            if (window.pageYOffset > sticky) {
+                userContainer.classList.add("sticky");
+            } else {
+                userContainer.classList.remove("sticky");
+            }
+        }
+    };
+
+    var userLinks = document.querySelectorAll('.user-container a');
+
+    userLinks.forEach(function(link) {
+        if (link.getAttribute('href') === window.location.pathname) {
+            link.classList.add('active');
+        }
+        link.addEventListener('click', function() {
+            userLinks.forEach(function(otherLink) {
+                otherLink.classList.remove('active');
+            });
+            link.classList.add('active');
+        });
+    });
+</script>

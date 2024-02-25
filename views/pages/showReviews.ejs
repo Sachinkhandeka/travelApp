@@ -1,0 +1,25 @@
+    <h3>All reviews</h3>
+    <div class="review-container">
+        <% for( review of listing.reviews ) { %>
+            <div class="review-card">
+                <div class="listing-review-user-info">
+                    <img src="<%= review.author.avatar %>" alt="user_img">
+                    <div>
+                        <h6><b class="review-creater"><%= review.author.firstName %></b></h6>
+                        <p><%= review.createdAt.toLocaleDateString('en-US') %></p>
+                    </div>
+                </div>
+                <div class="listing-review-rating">
+                    <p class="starability-result cart-text" data-rating="<%= review.rating %>"></p>
+                </div>
+                <div class="listing-review-comment">
+                    <p><%= review.comment %></p>
+                </div>
+                <% if ( currUser && currUser._id.equals(review.author._id)) { %>
+                    <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" class="mt-4" method="POST">
+                        <button class="btn btn-dark">Delete</button>
+                    </form>
+                <% } %>
+            </div>
+        <% } %>
+    </div> 

@@ -1,0 +1,55 @@
+<%- layout("./layouts/boilerplate.ejs") %>
+<div class="signup-container">
+    <h1 class="col-lg-6 offset-lg-2 mt-3">Signup on wanderlust</h1>
+    <div class="row mt-3">
+        <div class="col-lg-6 offset-lg-2 form-border">
+            <form action="/users/signup" method="POST" class="mt-3 needs-validation" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="username" class="form-label">username</label>
+                    <input type="text" id="username" name="user[username]" class="form-control" placeholder="add username" required>
+                    <div class="invalid-feedback">username field can't be empty!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">email id</label>
+                    <input type="text" id="email" name="user[email]" class="form-control" placeholder="add email" required>
+                    <div class="invalid-feedback">email is required</div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">upload Image</label>
+                    <input type="file" name="user[avatar]" id="image" placeholder="enter image URL/Link" class="form-control">
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="firstName" class="form-label">firstName</label>
+                        <input type="text" id="firstName" name="user[firstName]" class="form-control" placeholder="firstName" required>
+                        <div class="invalid-feedback">firstName required</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lastName" class="form-label">lastName</label>
+                        <input type="text" id="lastName" name="user[lastName]" class="form-control" placeholder="lastName" required>
+                        <div class="invalid-feedback">lastName required</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                        <input type="date" id="dateOfBirth" name="user[dateOfBirth]" class="form-control" placeholder="DD/MM/YY" required>
+                        <div class="invalid-feedback">DOB required</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phoneNumber" class="form-label">Mobile Number</label>
+                        <input type="number" id="phoneNumber" name="user[phoneNumber]" class="form-control" placeholder="2314432232" required>
+                        <div class="invalid-feedback">Mobile Number required</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="user[password]" class="form-control" placeholder="set password" required>
+                    <div class="invalid-feedback">Password field can't be empty!</div>
+                </div>
+                <button class="btn btn-dark mb-3 add-btn">Signup</button>
+                <a href="/users/login" class="link">Log in</a>
+            </form>
+        </div>
+    </div>
+</div>

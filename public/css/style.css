@@ -1,0 +1,458 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container {
+    flex: 1;
+}
+.navbar {
+    height: 4.5rem !important;
+    z-index: 1;
+}
+.fa-earth-americas {
+    font-size: 1.8rem !important;
+    color : #FF385C ;
+}
+#right,#left {
+    background: transparent;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    outline: 1px solid  #ccc;
+    text-align: center;
+    height: 2rem;
+    width: 2rem;
+}
+#right a i {
+    text-decoration: none;
+    color: black;
+    padding: 2px 5px 5px 2px;
+}
+#left a i {
+    text-decoration: none;
+    color: black;
+    padding: 2px 2px 5px 5px;
+}
+#right:hover {
+    box-shadow: 0.1rem 0.2rem 0.5rem #ccc;
+    height: 2.01rem;
+    width: 2.01rem;
+}
+#left:hover {
+    box-shadow: 0.1rem 0.2rem 0.5rem #ccc;
+    height: 2.01rem;
+    width: 2.01rem;
+}
+
+/* filter page styling */
+.gallary  {
+    width: 800px !important;
+    display: flex !important;
+    overflow-x: scroll;
+    transition: transform 0.3s ease;
+}
+
+.gallary div {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 1rem;
+    padding: 0.25rem;
+    flex: none !important;
+}
+.gallary div li {
+    width: 100%;
+    text-align: center;
+    color: #717171;
+}
+.gallary div li i {
+    display: block;
+    font-size: 1.4rem;
+    color: #717171;
+    cursor: pointer;
+}
+.gallary div li a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: #717171;
+}
+.gallary div li:hover  {
+    color: #FF385C;
+}
+.gallary::-webkit-scrollbar {
+    display: none;
+}
+
+.gallary-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+#right ,#left {
+    cursor: pointer;
+}
+.nav-item.active {
+    border-bottom: 1px solid #FF385C;
+    color: #FF385C;
+}
+
+
+/* footer custom style */
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.f-info-socials {
+    width: 100%;
+}
+.f-info-links {
+    width: 100%;
+}
+.f-info-links a {
+    text-decoration: none;
+    color: black;
+}
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+.f-info-company a {
+    text-decoration: none;
+    color: black;
+}
+.f-info-company a:hover {
+    text-decoration: underline;
+}
+.f-info-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.f-info-socials a {
+    height: 100%;
+    margin-right: 1rem;
+    color: #717171;
+}
+.f-info-socials a i {
+    font-size: 1.5rem;
+}
+.f-info-socials a i:hover {
+    color: #FF385C;
+}
+
+/* cards custom style */
+.card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top {
+    border-radius: 1.2rem !important;
+    width: 100% !important;
+    object-fit: cover;
+    height: 17rem;
+}
+.card-body {
+    padding: 0 !important;
+}
+.listing-link {
+    text-decoration: none;
+}
+.card-title {
+    color: #222222 !important;
+    margin-top: 1rem !important;
+}
+#price {
+    color: #222222 !important;
+    font-weight: 400;
+}
+.card-img-overlay {
+    opacity: 0 ;
+}
+.card-img-overlay:hover {
+    opacity: 0.2 !important;
+    background-color: white !important;
+}
+
+/* listing form custom style */
+.add-btn {
+    background: linear-gradient(to right,#E61E4D 0%,#E31C5F 50%,#D70466 100%) !important;
+    border: 0 !important;
+    outline: none !important;
+}
+
+/* listing page custom style */
+.listing-title {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.listing-s-l {
+    display: flex;
+    align-items: center;
+}
+.share , .like { 
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    outline: 0;
+    border: none;
+    background-color: transparent;
+}
+.share, .like i {
+    font-size: 1.2rem;
+}
+.share:hover {
+    background-color: #ebebeb;
+    border-radius: 0.2rem;
+}
+.like:hover {
+    background-color: #ebebeb;
+    border-radius: 0.2rem;
+}
+
+.listing-imgs {
+    display: grid;
+    grid-template-areas: 
+       "photoOne phototwo photothree"
+       "photoOne photoFour photoFive";
+    grid-template-columns: 1fr 20% 20%;
+    grid-gap: .5em;
+    border-radius: 1rem;
+}
+
+.listing-img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+}
+.listing-imgs > div {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+.listing-imgs>div:first-child {
+    grid-area: photoOne;
+}
+/* listing info section */
+.listing-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+.listing-info .listing-info-desc {
+    width: 65%;
+    margin-right: 5rem;
+}
+.listing-info-desc p span {
+    margin-right: 0.3rem;
+}
+.listing-info .listing-info-booking {
+    border: 1px solid #717171;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.3rem 0.9rem #ccc;
+    max-height: 300px;
+    position: sticky;
+    top : 11rem;
+}
+.listing-info-booking-form {
+    border: 1px solid #C13515;
+    border-radius: 0.3rem;
+    display: flex;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+.listing-info-booking-form input {
+    outline: 0;
+    border: none;
+    padding: 0.6rem;
+    width: 100%;
+}
+.listing-info-booking-form .check-in {
+    border-right: 1px solid #C13515;
+}
+.check-in label {
+    font-size: 0.7rem;
+    padding-left: 0.5rem;
+    color: #B32505;
+    font-weight: 700;
+}
+.check-out label {
+    font-size: 0.7rem;
+    padding-left: 0.5rem;
+    color: #B32505;
+    font-weight: 700;
+}
+.reserve {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: linear-gradient(to right,#E61E4D 0%,#E31C5F 50%,#D70466 100%);
+    border-radius: 1rem;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+/* owner details */
+.listing-info-owner {
+    display: flex;
+    align-items: center;
+}
+.owner-img img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+/* facilities section */
+.facilities-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.facilities-container div {
+    display:  flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.facilities-container div i {
+    margin-right: 1rem;
+    font-size: 1.4rem;
+}
+.facilities-container div h5 {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+/* listing btns section  */
+.listing-btns {
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-around;
+}
+.listing-updt-btn {
+    outline: 0;
+    border: none;
+    background: linear-gradient(to left,#E61E4D 0%,#E31C5F 50%,#D70466 100%);
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 600;
+}
+.listing-delete-btn {
+    outline: 0;
+    border: none;
+    background: radial-gradient(circle at center,#FF385C 0%,#E61E4D 27.5%,#E31C5F 40%,#D70466 57.5%,#BD1E59 75%,#BD1E59 100%);
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 600;
+    width: 100%;
+}
+.listing-updt-btn:hover {
+    box-shadow: 0 0.2rem 0.6rem #717171;
+}
+.listing-delete-btn:hover {
+    box-shadow: 0 0.2rem 0.6rem #717171;
+}
+
+/* about */
+.about div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.about div i {
+    font-size: 1.5rem;
+    margin-right: 2rem;
+}
+.about div span {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* tax toggle btn */
+.tax-toggle {
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+@media screen and (max-width: 750px) {
+    .gallary {
+        width: 500px;
+
+    }
+    .gallary div {
+        display: grid;
+        width: 100%;
+        grid-template-columns: auto auto auto auto auto ;
+        grid-gap: 0.3rem;
+        padding: 0.25rem;
+        flex: none !important;
+    }
+    #right,#left {
+        display: none;
+    }
+    .card-img-top {
+        border-radius: 0.5rem !important;
+        width: 100% !important;
+        object-fit: cover;
+        height: 19rem;
+    }
+
+    /* listing detail section */
+    .listing-s-l .share {
+        display: none;
+    }
+    .listing-info {
+        display: block;
+    }
+    .listing-info .listing-info-desc {
+        width: 100%;
+    }
+    .facilities-container {
+        grid-auto-columns: 1fr;
+    }
+    .listing-info-booking {
+        max-height: 500px;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    .gallary {
+        width: 500px;
+
+    }
+    .gallary div {
+        display: grid;
+        width: 100%;
+        grid-template-columns: auto auto auto auto auto ;
+        grid-gap: 0.3rem;
+        padding: 0.25rem;
+        flex: none !important;
+    }
+    #right,#left {
+        display: none;
+    }
+     /* listing detail section */
+     .listing-s-l .share {
+        display: none;
+    }
+    .listing-info {
+        display: block;
+    }
+    .listing-info .listing-info-desc {
+        width: 100%;
+    }
+  }

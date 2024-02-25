@@ -1,0 +1,113 @@
+<ul class="nav nav-underline gallary-wrapper shadow bg-body-tertiary mt-0 mb-0 mx-0">
+    <button id="right"><a href=""><i class="fa-solid fa-less-than"></i></a></button>
+    <div class="gallary">
+        <div>
+            <li class="nav-item me-2 nav-link amazing-view">
+                <i class="fa-solid fa-street-view"></i>
+                <a href="/listings">Amazing View</a>
+            </li>
+            <li class="nav-item me-2 nav-link Play">
+                <i class="fa-solid fa-baseball-bat-ball"></i>
+                <a href="/listings">Play</a>
+            </li>
+            <li class="nav-item me-2 nav-link Tiny-Home">
+                <i class="fa-solid fa-house-chimney"></i>
+                <a href="/listings">Tiny Home</a>
+            </li>
+            <li class="nav-item me-2 nav-link Farm">
+                <i class="fa-solid fa-tractor"></i>
+                <a href="/listings">Farm</a>
+            </li>
+            <li class="nav-item me-2 nav-link Tree-House">
+                <i class="fa-solid fa-tree-city"></i>
+                <a href="/listings">Tree House</a>
+            </li> 
+        </div>
+        <div>
+            <li class="nav-item me-2 nav-link Amazing-Pools">
+                <i class="fa-solid fa-water-ladder"></i>
+                <a href="/listings">Amazing Pools</a>
+            </li>
+            <li class="nav-item me-2 nav-link Arctic">
+                <i class="fa-solid fa-snowflake"></i>
+                <a href="/listings">Arctic</a>
+            </li>
+            <li class="nav-item me-2 nav-link Beach">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <a href="/listings">Beach</a>
+            </li>
+            <li class="nav-item me-2 nav-link Mountain">
+                <i class="fa-solid fa-mountain"></i>
+                <a href="/listings">Mountain</a>
+            </li>
+            <li class="nav-item me-2 nav-link Peacfull">
+                <i class="fa-solid fa-om"></i>
+                <a href="/listings">Peacfull</a>
+            </li> 
+        </div>
+        <div>
+            <li class="nav-item me-2 nav-link Wild-Life">
+                <i class="fa-solid fa-hippo"></i>
+                <a href="/listings">Wild Life</a>
+            </li>
+            <li class="nav-item me-2 nav-link OMG">
+                <i class="fa-solid fa-lines-leaning"></i>
+                <a href="/listings">OMG</a>
+            </li>
+            <li class="nav-item me-2 nav-link Yoga">
+                <i class="fa-solid fa-hands-praying"></i>
+                <a href="#">Yoga</a>
+            </li>
+            <li class="nav-item me-2 nav-link Nature">
+                <i class="fa-solid fa-atom"></i>
+                <a href="/listings">Nature</a>
+            </li>
+            <li class="nav-item me-2 nav-link Trending">
+                <i class="fa-solid fa-biohazard"></i>
+                <a href="/listings">Trending</a>
+            </li> 
+        </div>
+    </div>
+    <button id="left"><a href=""><i class="fa-solid fa-greater-than"></i></a></button>
+  </ul>
+    <script>
+        let elementClicked = document.querySelector(".gallary");
+
+
+        elementClicked.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent the default behavior
+            let url  = "http://localhost:8080/";
+
+            // Check if the user clicked on <a> inside <li>
+            if (e.target.localName === "a" || e.target.localName === "i") {
+                filter = e.target.parentElement.classList[3];
+            }
+            window.location.href = `${url}listings/category/${filter}`;
+        });
+
+        //functionality for the border-bottom when clicked on nav-item;
+        const navItems = document.querySelectorAll('.nav-item li');
+
+        // Check if there is a stored active item
+        const storedActiveItem = localStorage.getItem('activeNavItem');
+        if (storedActiveItem) {
+            const activeItem = document.querySelector(`.${storedActiveItem}`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
+        }
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function () {
+                // Remove 'active' class from all items
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+
+                // Add 'active' class to the clicked item
+                item.classList.add('active');
+
+                // Store the clicked item in localStorage
+                localStorage.setItem('activeNavItem', item.classList[1]);
+            });
+        });
+    </script>
+

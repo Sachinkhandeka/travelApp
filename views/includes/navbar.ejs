@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md sticky-top bg-white border-bottom mb-0">
+    <div class="container-fluid d-flex justify-content-between bg-white">
+      <div class="d-none d-sm-block d-flex">
+        <a class="navbar-brand" href="#"><i class="fa-solid fa-earth-americas"></i></a>
+      </div>
+      <div>
+          <form class="d-flex" role="search" action="/listings/search" method="GET">
+                <input class="form-control me-2 w-sm-5" name="filter" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+           </form>
+      </div>
+      <div>
+          <button class="navbar-toggler btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button> 
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/listings">All Listings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/listings/new">Add New Listing</a>
+              </li>
+            </ul>
+          </div>    
+      </div>
+    </div>
+  </nav>
+

@@ -1,0 +1,22 @@
+<%- layout("./layouts/boilerplate.ejs") %>
+<div class="login-container">
+    <h1 class="col-lg-6 offset-lg-2 mt-3">Welcome Back on Wanderlust</h1>
+    <div class="row mt-3">
+        <div class="col-lg-6 offset-lg-2 form-border">
+            <form action="/users/login" method="POST" class="mt-3 needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">username</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="sachin_008" required>
+                    <div class="invalid-feedback">username field can't be empty!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="enter password" required>
+                    <div class="invalid-feedback">Password field can't be empty!</div>
+                </div>
+                <button class="btn btn-dark mb-3 add-btn">Login</button>
+                <a href="/users/signup" class="link">Sign up</a>
+            </form>
+        </div>
+    </div>
+</div>

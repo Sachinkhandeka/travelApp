@@ -1,0 +1,71 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<body>
+    <div class="listing-container">
+        <div class="wanderlust-home col-lg-6 offset-lg-2">
+            <h2 class="wanderlust"><b>List your home.</b></h2>
+            <h2>You could earn</h2>
+            <h1><b>₹35,448</b></h1>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-6 offset-lg-2 form-border">
+                <form action="/listings" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title" name="listing[title]" placeholder="add catchy title" class="form-control" required>
+                        <div class="invalid-feedback">Title field can't be empty!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listing[description]" id="description" cols="30" rows="5" placeholder="enter description" class="form-control" required></textarea>
+                        <div class="invalid-feedback">description field can't be empty!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload Image</label>
+                        <input type="file" name="listing[image]" id="image" placeholder="enter image URL/Link" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <div class="input-group mb-3 form-control" name="listing[category]" id="category" required>
+                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                            <select class="form-select" id="inputGroupSelect01" name="listing[category]">
+                                <option selected>Amazing-View</option>
+                                <option value="Play">Play</option>
+                                <option value="Tiny-Home">Tiny-Home</option>
+                                <option value="Tree-House">Tree-House</option>
+                                <option value="Farm">Farm</option>
+                                <option value="Amazing-Pools">Amazing-Pools</option>
+                                <option value="Arctic">Arctic</option>
+                                <option value="Beach">Beach</option>
+                                <option value="Mountain">Mountain</option>
+                                <option value="Peaceful">Peaceful</option>
+                                <option value="Wild-Life">Wild-Life</option>
+                                <option value="OMG">OMG</option>
+                                <option value="Yoga">Yoga</option>
+                                <option value="Nature">Nature</option>
+                                <option value="Trending">Trending</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" id="price" name="listing[price]" placeholder="1,200" class="form-control" required>
+                            <div class="invalid-feedback">Price field can't be empty!</div>
+                        </div>
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" id="country" name="listing[country]" placeholder="India" class="form-control" required>
+                            <div class="invalid-feedback">Country field can't be empty!</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" name="listing[location]" placeholder="Rapar, Gujarat" class="form-control" required>
+                        <div class="invalid-feedback">Location field can't be empty!</div>
+                    </div>
+                    <button class="btn btn-dark mb-3 add-btn">Submit</button>
+                </form>
+            </div>
+        </div> 
+    </div> 
+</body>

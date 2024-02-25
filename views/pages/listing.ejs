@@ -1,0 +1,162 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<script>
+    const mapToken = "<%= process.env.MAP_TOKEN %>";
+    const coordinates = "<%= listing.geometry.coordinates %>";
+</script>
+    <div class="listing">
+        <div class="listing-title">
+            <h3><%= listing.title %></h3>
+            <div class="listing-s-l">
+                <button class="share"><i class="fa-solid fa-share-nodes"></i></button>
+                <form action="/wishlists/users" method="POST">
+                    <input type="hidden" id="listingId" name="listingId" value="<%= listing._id %>">
+                    <button class="like"><i class="fa-regular fa-heart"></i></button> 
+                </form>
+            </div>
+        </div>
+        <div class="listing-imgs">
+            <div><img src="<%= listing.image.url %>" alt="listing_img" class="listing-img"></div>
+            <div><img src="<%= listing.image.url %>" alt="listing_img" class="listing-img"></div>
+            <div><img src="<%= listing.image.url %>" alt="listing_img" class="listing-img"></div>
+            <div><img src="<%= listing.image.url %>" alt="listing_img" class="listing-img"></div>
+            <div><img src="<%= listing.image.url %>" alt="listing_img" class="listing-img"></div>
+        </div>
+        <div class="listing-info">
+            <div class="listing-info-desc">
+                <h5><%= listing.description %></h5>
+                <p>
+                    <span>1Guests</span>&middot;
+                    <span>2Bedrooms</span>&middot;
+                    <span>1Bed</span>&middot;
+                    <span>1Bathrooms</span>
+                </p>
+                <hr>
+                <div class="listing-info-owner">
+                    <div class="owner-img">
+                        <img src="<%= listing.owner.avatar.url %>" alt="host">
+                    </div>
+                    <div class="owner-details">
+                        <h5>Hosted by <%= listing.owner.firstName %></h5>
+                        <p>superhost&middot; 5 years hosting</p>
+                    </div>
+                </div>
+                <% if ( currUser && currUser._id.equals(listing.owner._id)) { %>
+                    <div class="listing-btns">
+                        <form action="/listings/<%= listing._id %>/edit" method="get">
+                            <button class="listing-updt-btn">update Listing</button>
+                        </form>
+                        <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                            <button class="listing-delete-btn">Delete</button>
+                        </form>
+                    </div>
+                <% } %>
+                <hr>
+                <div class="about">
+                    <div>
+                        <i class="fa-solid fa-user-astronaut"></i>
+                        <span>
+                            <h5><%= listing.owner.firstName %> is a Superhost</h5>
+                            <p>Superhosts are experienced, highly rated Hosts.</p>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-key"></i>
+                        <span>
+                            <h5>Great check-in experience</h5>
+                            <p>100% of recent guests gave the check-in process a 5-star rating.</p>
+                        </span>  
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-bath"></i>
+                        <span>
+                            <h5>Unwind in the hot tub</h5>
+                            <p>This is one of the few places in the area with this amenity.</p>
+                        </span>
+                    </div>
+                </div>
+                <hr>
+                <div class="listing-facilities">
+                    <h4>What this place offers</h4>
+                    <div class="facilities-container">
+                        <div>
+                            <i class="fa-solid fa-wifi"></i>
+                            <h5>Free wi-fi</h5>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-mountain"></i>
+                            <h5>Mountain view</h5>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-car"></i>
+                            <h5>Free parking</h5>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-kitchen-set"></i>
+                            <h5>Kitchen</h5>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-bolt"></i>
+                            <h5>Special</h5>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <% if (currUser) { %>
+                    <div>
+                        <%- include("./review.ejs", { listing : listing}) %>
+                    </div>
+                    <hr>
+                <% } %>
+            </div>
+            <div class="listing-info-booking">
+                <div class="price">
+                    <h5><b><%= listing.price.toLocaleString('en-IN', {
+                        maximumFractionDigits: 2,
+                        style: 'currency',
+                        currency: 'INR'
+                    }); %></b>&nbsp; night</h5>
+                </div>
+                <form action="/reserve/<%= listing._id %>" method="post">
+                    <div class="listing-info-booking-form">
+                        <span class="check-in">
+                            <label for="check-in">CHECK-IN</label>
+                            <input type="text" name="checkin" id="check-in" placeholder="1/2/24">
+                        </span>
+                        <span class="check-out">
+                            <label for="check-out">CHECK-OUT</label>
+                            <input type="text" name="checkout" id="check-out" placeholder="2/2/24">
+                        </span>
+                    </div>
+                    
+                    <button class="reserve">Reserve</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <% if (listing.reviews.length > 0 ) { %>
+            <div class="all-reviews">
+                <%- include("./showReviews.ejs"), { listing : listing } %>
+            </div>
+            <hr>
+        <% } %>
+        <div class="listing-location">
+            <h3>Where you’ll be</h3>
+            <div id="map"></div>
+            <div>
+                <h5><%= listing.location %>, <%= listing.country %></h5>
+                <p>You'll be living in a small Coorg village surrounded by lush coffee estates, birdsongs and occasional fireflies, crickets and wildlife.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btn = document.querySelector(".like");
+
+        btn.addEventListener("click" , (e)=> {
+            let heart = e.currentTarget.querySelector("i");
+
+            heart.classList.remove("fa-regular");
+            heart.classList.add("fa-solid");
+        });
+    </script>
+    <script src="/js/map.js"></script>
+        

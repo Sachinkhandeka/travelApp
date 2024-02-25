@@ -1,0 +1,102 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<body>
+    <div class="listing-container">
+        <div class="col-lg-6 offset-lg-2">
+            <h1>Update your Listing</h1>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-6 offset-lg-2 form-border">
+                <form id="updateListingForm" action="/listings/<%= listing._id %>?_method=PUT" method="POST" class="mt-3 needs-validation" novalidate enctype="multipart/form-data">
+                    <div class="mb-3 update-img text-center">
+                        <img src="<%= originalUrl %>" alt="Listing Image" id="uploadedImage" class="mb-2">
+                        <label for="image" class="fa-solid fa-pen" id="penIcon"></label>
+                        <input type="file" id="image" name="listing[image]" accept="image/*" onchange="previewImage()" class="form-control" style="display: none;">
+                        <div class="invalid-feedback">Image field can't be empty!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title" name="listing[title]" value="<%= listing.title %>" class="form-control" required>
+                        <div class="invalid-feedback">Title field can't be empty!</div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listing[description]" id="description" cols="30" rows="5" class="form-control" required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">Description field can't be empty!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <div class="input-group mb-3 form-control" name="listing[category]" id="category" required>
+                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                            <select class="form-select" id="inputGroupSelect01" name="listing[category]">
+                                <option selected><%= listing.category %></option>
+                                <option value="Play">Play</option>
+                                <option value="Tiny-Home">Tiny-Home</option>
+                                <option value="Tree-House">Tree-House</option>
+                                <option value="Farm">Farm</option>
+                                <option value="Amazing-Pools">Amazing-Pools</option>
+                                <option value="Arctic">Arctic</option>
+                                <option value="Beach">Beach</option>
+                                <option value="Mountain">Mountain</option>
+                                <option value="Peaceful">Peaceful</option>
+                                <option value="Wild-Life">Wild-Life</option>
+                                <option value="OMG">OMG</option>
+                                <option value="Yoga">Yoga</option>
+                                <option value="Nature">Nature</option>
+                                <option value="Trending">Trending</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" id="price" name="listing[price]" value="<%= listing.price %>" class="form-control" required>
+                            <div class="invalid-feedback">pricee field can't be empty!</div>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" id="country" name="listing[country]" value="<%= listing.country %>" class="form-control" required>
+                            <div class="invalid-feedback">Country field can't be empty!</div>
+                        </div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" name="listing[location]" value="<%= listing.location %>" class="form-control" required>
+                        <div class="invalid-feedback">Location field can't be empty!</div>
+                    </div>
+                    <button class="btn btn-dark mb-3 add-btn">Edit</button>
+                </form>
+            </div>
+          </div> 
+    </div>
+    <script>
+        function previewImage() {
+            // Step 1: Get the file input element and the image element
+            let input = document.getElementById('image');
+            let img = document.getElementById('uploadedImage');
+
+            // Step 2: Check if files are selected
+            if (input.files && input.files[0]) {
+
+                // Step 3: Create a FileReader object
+                let reader = new FileReader();
+
+                // Step 4: Define the onload event handler for the FileReader
+                reader.onload = function (e) {
+
+                    // Step 5: Set the src attribute of the image to the result of FileReader
+                    img.src = e.target.result;
+                };
+
+                // Step 6: Read the selected file as a data URL
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    // Temporary preview when user selects an image
+    document.getElementById('image').addEventListener('change', function () {
+        previewImage();
+    });
+    </script>
+</body>
