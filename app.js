@@ -89,6 +89,11 @@ app.use((req ,res,next)=> {
     next();
 });
 
+// home redirect route 
+app.get("/" , (req ,res)=> {
+    res.redirect("/listings");
+});
+
 //router paths for listings & reviews
 app.use("/listings" , listingRouter);
 app.use("/listings/:id/reviews" , reviewRouter);

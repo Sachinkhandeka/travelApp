@@ -389,6 +389,13 @@ body {
     background-color: white;
 }
 @media screen and (max-width: 750px) {
+    /* navbar search icons custome style */
+    .search-bar {
+        width: 70%;
+    }
+    .search-box {
+        width: 55% !important;
+    }
     .gallary {
         width: 500px;
 

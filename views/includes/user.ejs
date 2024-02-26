@@ -1,12 +1,6 @@
 <div class="user-container">
     <% if(!currUser) { %>
         <div>
-            <a href="/users/login" class="user-login-signup">
-                <i class="fa-regular fa-user"></i>
-                <p>Log in</p>
-            </a>
-        </div> 
-        <div>
             <a href="/wishlists/users">
                 <i class="fa-regular fa-heart"></i>
                 <p>Wishlists</p>
@@ -18,18 +12,24 @@
                 <p>Explore</p>
             </a>
         </div>
+        <div>
+            <a href="/users/login" class="user-login-signup">
+                <i class="fa-regular fa-user"></i>
+                <p>Log in</p>
+            </a>
+        </div> 
     <% } %>
     <% if (currUser) { %>
-        <div>
-            <a href="/listings">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <p>Explore</p>
-            </a>
-        </div>
         <div>
             <a href="/wishlists/users">
                 <i class="fa-regular fa-heart"></i>
                 <p>Wishlists</p>
+            </a>
+        </div>
+        <div>
+            <a href="/listings">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>Explore</p>
             </a>
         </div>
         <div>
