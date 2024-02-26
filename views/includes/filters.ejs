@@ -76,7 +76,6 @@
 
         elementClicked.addEventListener("click", (e) => {
             e.preventDefault(); // Prevent the default behavior
-            let url  = "http://localhost:8080/";
 
             // Check if the user clicked on <a> inside <li>
             if (e.target.localName === "a" || e.target.localName === "i") {
