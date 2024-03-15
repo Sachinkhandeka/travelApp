@@ -22,7 +22,7 @@
     text-align: center;
     padding: 20px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 1rem;
     min-height: 50vh;
 }
 
@@ -55,4 +55,15 @@
         margin-left: 1rem !important;
     }
     
+}
+
+@media screen and (max-width: 768px) {
+    .wishlist-body {
+        margin-left: 0 !important;
+        text-align: center !important;
+    }
+    .img-fluid {
+        border-top-right-radius: 1rem !important;
+        /* border-bottom-left-radius:  !important; */
+    }
 }
